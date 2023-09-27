@@ -48,7 +48,7 @@ public class ExecutePointReservationStepConfiguration {
     }
 
     @Bean
-    @JobScope
+    @StepScope
     public JpaPagingItemReader<PointReservation> executePointReservationItemReader(
             EntityManagerFactory entityManagerFactory,
             @Value("#{T(java.time.LocalDate).parse(jobParameters[today])}")
