@@ -20,33 +20,32 @@ import org.springframework.test.context.ActiveProfiles;
 public abstract class BatchTestSupport {
 
     @Autowired
-    private JobLauncher jobLauncher;
+    protected JobRepository jobRepository;
     @Autowired
-    private JobRepository jobRepository;
+    protected JobLauncher jobLauncher;
     @Autowired
-    private PointWalletRepository pointWalletRepository;
+    protected PointWalletRepository pointWalletRepository;
     @Autowired
-    private PointRepository pointRepository;
+    protected PointRepository pointRepository;
     @Autowired
-    private MessageRepository messageRepository;
+    protected MessageRepository messageRepository;
     @Autowired
-    private PointReservationRepository pointReservationRepository;
+    protected PointReservationRepository pointReservationRepository;
 
-    protected JobExecution launchJob(Job job, JobParameters jobParameters)  throws Exception {
+    protected JobExecution launchJob(Job job, JobParameters jobParameters) throws Exception {
         JobLauncherTestUtils jobLauncherTestUtils = new JobLauncherTestUtils();
         jobLauncherTestUtils.setJob(job);
         jobLauncherTestUtils.setJobLauncher(jobLauncher);
         jobLauncherTestUtils.setJobRepository(jobRepository);
-
         return jobLauncherTestUtils.launchJob(jobParameters);
     }
 
     @AfterEach
     protected void deleteAll() {
-        pointWalletRepository.deleteAll();
         pointRepository.deleteAll();
-        messageRepository.deleteAll();
         pointReservationRepository.deleteAll();
+        pointWalletRepository.deleteAll();
+        messageRepository.deleteAll();
     }
 
 }

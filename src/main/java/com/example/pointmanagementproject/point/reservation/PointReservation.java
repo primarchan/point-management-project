@@ -2,10 +2,7 @@ package com.example.pointmanagementproject.point.reservation;
 
 import com.example.pointmanagementproject.point.IdEntity;
 import com.example.pointmanagementproject.point.wallet.PointWallet;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -31,6 +28,7 @@ public class PointReservation extends IdEntity {
     @Column(name = "available_days", nullable = false)
     int availableDays;
 
+    @Setter
     @Column(name = "is_executed", columnDefinition = "TINYINT", length = 1)
     boolean executed;
 

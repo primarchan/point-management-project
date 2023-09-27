@@ -1,10 +1,7 @@
 package com.example.pointmanagementproject.point;
 
 import com.example.pointmanagementproject.point.wallet.PointWallet;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -33,6 +30,7 @@ public class Point extends IdEntity {
     @Column(name = "is_used", nullable = false, columnDefinition = "TINYINT", length = 1)
     boolean used;
 
+    @Setter
     @Column(name = "is_expired", nullable = false, columnDefinition = "TINYINT", length = 1)
     boolean expired;
 
