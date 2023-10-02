@@ -7,4 +7,6 @@ import java.time.LocalDate;
 
 public interface PointCustomRepository {
     Page<ExpiredPointSummary> sumByExpiredDate(LocalDate alarmCriteriaDate, Pageable pageable);
+    Page<ExpiredPointSummary> sumBeforeCriteriaDate(LocalDate alarmCriteriaDate, Pageable pageable);
+
 }
